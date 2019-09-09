@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PersonalExpenseManagement } from 'src/app/core/services/personalExpenseManagement.services';
 
 @Component({
   selector: 'app-list',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor() { }
+  showForm: boolean = false;
+  listItems = [];
+
+  constructor( private personalExpenseManagement: PersonalExpenseManagement ) { }
 
   ngOnInit() {
+    this.listItems = this.personalExpenseManagement.ListItems;
+  }
+
+  ShowForm() {
+    this.personalExpenseManagement.showForm = true;
   }
 
 }

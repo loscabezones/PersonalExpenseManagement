@@ -1,7 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+// routing //
 import { AppRoutingModule } from './app-routing.module';
+
+// components //
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './core/components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
@@ -18,7 +22,9 @@ import { FormComponent } from './components/form/form.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
