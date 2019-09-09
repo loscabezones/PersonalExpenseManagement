@@ -29,7 +29,6 @@ export class FormComponent implements OnInit {
   }
 
   onSubmitForm() {
-
     const date = this.personalExpenseManagement.formatDate(this.fecha.value)
 
     const formValues = {
@@ -39,6 +38,8 @@ export class FormComponent implements OnInit {
     };
 
     this.ListItems.push(formValues);
+    this.personalExpenseManagement.orderArray()
+    localStorage.setItem("List", JSON.stringify(this.ListItems));
     this.personalExpenseForm.reset();
   }
 

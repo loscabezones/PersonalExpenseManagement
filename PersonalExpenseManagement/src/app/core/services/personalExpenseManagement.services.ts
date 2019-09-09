@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class PersonalExpenseManagement {
 
   showForm: boolean = false;
-  public ListItems = [];
+  public ListItems =  localStorage.getItem("List") ? JSON.parse(localStorage.getItem("List")) : [];
 
   constructor() {
   }
@@ -26,6 +26,15 @@ export class PersonalExpenseManagement {
       d = date.getDate();
       return d + "/" + m + "/" + y;
     }
+  }
+
+  orderArray(){
+    this.ListItems.sort(function (a, b) {
+      a = new Date(a.fecha);
+      b = new Date(b.fecha);
+      return a - b;
+    });
+    this.ListItems.reverse();
   }
 
 }

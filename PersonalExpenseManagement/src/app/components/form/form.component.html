@@ -1,6 +1,6 @@
 <form *ngIf="personalExpenseManagement.showForm" [formGroup]="personalExpenseForm"
   (ngSubmit)="onSubmitForm()">
-  <div class="row">
+  <div class="row row-custom">
     <div class="col-sm-12 mt-2">
       <label for="fecha">Fecha</label>
       <input type="date" class="form-control" formControlName="fecha">
