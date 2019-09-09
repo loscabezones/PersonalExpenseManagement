@@ -1,0 +1,37 @@
+<div class="container">
+  <div *ngIf="listItems && listItems.length" class="row justify-content-center">
+    <div class="col">
+      <div class="row">
+        <div class="col-3 col-custom">
+          Fecha
+        </div>
+        <div class="col col">
+          Titulo
+        </div>
+        <div class="col-auto col-custom">
+          Precio
+        </div>
+      </div>
+      <div class="" *ngFor="let item of listItems">
+        <hr />
+        <div class="row align-items-center">
+          <div class="col-3 col-custom">
+            {{item.fecha}}
+          </div>
+          <div class="col">
+            {{item.concepto}}
+          </div>
+          <div class="col-auto col-custom">
+            {{item.importe}}€
+          </div>
+        </div>
+      </div>
+      <hr />
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col col justify-content-center d-flex">
+      <button type="button" class="btn btn-primary" (click)="ShowForm()">Nuevo gasto</button>
+    </div>
+  </div>
+</div>
