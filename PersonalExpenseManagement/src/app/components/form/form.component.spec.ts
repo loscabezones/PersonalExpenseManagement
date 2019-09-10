@@ -3,13 +3,27 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormComponent } from './form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PersonalExpenseManagement } from 'src/app/core/services/personalExpenseManagement.services';
+import { formatDate } from '@angular/common';
 
 class mockPersonalExpenseManagement {
-  showForm = false;
+  showForm = true;
   ListItems = ['test'];
+  formatDate(dateSelected) {
+    if (!dateSelected) {
+      const actualDate = formatDate(new Date(), 'dd/MM/yyyy', 'en');
+      return actualDate
+    } else {
+      const formatDay = formatDate(new Date(dateSelected), 'dd/MM/yyyy', 'en');
+      return formatDay;
+    }
+  }
+  orderArray(){
+    this.ListItems.reverse();
+  }
+
 }
 
-fdescribe('FormComponent', () => {
+describe('FormComponent', () => {
   let component: FormComponent;
   let fixture: ComponentFixture<FormComponent>;
   let services: PersonalExpenseManagement;
@@ -42,5 +56,17 @@ fdescribe('FormComponent', () => {
   it('OnInit', () => {
     component.ngOnInit()
     expect(component.ListItems).toEqual(services.ListItems);
+  });
+
+  it('onSubmitForm', () => {
+    component.onSubmitForm();
+    expect(component.ListItems).toEqual(services.ListItems);
+
+  });
+
+  it('cancelForm', () => {
+    expect(services.showForm).toBe(true);
+    component.cancelForm()
+    expect(services.showForm).toBe(false);
   });
 });

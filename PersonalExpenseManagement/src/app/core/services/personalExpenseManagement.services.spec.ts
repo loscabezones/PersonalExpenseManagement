@@ -62,7 +62,7 @@ describe('PersonalExpenseManagement', () => {
     ]
 
     localStorage.setItem("List", JSON.stringify(result));
-
+    console.log(result);
     expect(service.ListItems).toEqual(result);
 
   });
