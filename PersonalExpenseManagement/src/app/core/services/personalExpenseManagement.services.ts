@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { formatDate } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -12,19 +13,12 @@ export class PersonalExpenseManagement {
   }
 
   formatDate(dateSelected) {
-    let date = new Date();
-    let y = date.getFullYear();
-    let m = date.getMonth() + 1;
-    let d = date.getDate();
-
     if (!dateSelected) {
-      return d + "/" + m + "/" + y;
+      const actualDate = formatDate(new Date(), 'dd/MM/yyyy', 'en');
+      return actualDate
     } else {
-      date = new Date(dateSelected)
-      y = date.getFullYear();
-      m = date.getMonth() + 1;
-      d = date.getDate();
-      return d + "/" + m + "/" + y;
+      const formatDay = formatDate(new Date(dateSelected), 'dd/MM/yyyy', 'en');
+      return formatDay;
     }
   }
 
