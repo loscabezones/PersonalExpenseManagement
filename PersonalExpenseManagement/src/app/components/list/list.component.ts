@@ -8,7 +8,6 @@ import { PersonalExpenseManagement } from 'src/app/core/services/personalExpense
 })
 export class ListComponent implements OnInit {
 
-  showForm: boolean = false;
   listItems = [];
 
   constructor( private personalExpenseManagement: PersonalExpenseManagement ) { }
